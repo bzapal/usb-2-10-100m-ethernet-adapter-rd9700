@@ -1,0 +1,123 @@
+
+; ** COPYRIGHT (C) 2003-2010 CORECHIP Semiconductor, Inc.
+
+;*******************************************************************************
+; INF for Windows NT5/6.X
+
+[Version]
+Signature  = "$CHICAGO$"
+Compatible = 1
+Class      = Net
+ClassGUID  = {4d36e972-e325-11ce-bfc1-08002be10318}
+Provider   = %SUPCOM%
+DriverVer   = 09/06/2010, 1.00.0906.0
+CatalogFile = RD9700.cat
+
+[Manufacturer]
+%SUPCOM%   = RD9700, NTx86
+
+[ControlFlags]
+;ExcludeFromSelect = USB\VID_0FE6&PID_9700
+
+;*******************************************************************************
+; NT5/6.X main sections
+;NTx86
+[RD9700.NTx86]
+%RD9700.DeviceDesc% = RD9700.Ndi,USB\VID_0FE6&PID_9700
+%RD9700.DeviceDesc% = RD9700.Ndi,USB\VID_0FE6&PID_9702&MI_01
+
+[RD9700.Ndi.NTx86]
+AddReg          = RD9700.NTx86.Reg, RD9700.Params
+Characteristics = 0x84 ; NCF_HAS_UI | NCF_PHYSICAL
+BusType         = 15 ;
+CopyFiles       = RD9700.ndis.copyfiles.NTx86
+
+[RD9700.Ndi.NTx86.Services]
+AddService = RD9700, 2, RD9700.Service, Common.EventLog
+
+[RD9700.ndis.copyfiles.NTx86]
+RD9700.sys,,,2
+
+;*******************************************************************************
+; Install section for Windows NT5/6.X
+
+;NTx86
+[RD9700.NTx86.Reg]
+; Interfaces
+HKR, Ndi\Interfaces, LowerRange, 0, "ethernet"
+HKR, Ndi\Interfaces, UpperRange, 0, "ndis5"
+HKR, Ndi,            Service,    0, "RD9700"
+HKR,,                Platform,   0, "1"
+
+;*******************************************************************************
+; Driver parameters
+
+[RD9700.Params]
+HKR, ,TxPacketDesc,    0, "46"   ; 0x2E
+HKR, ,RxPacketDesc,    0, "1"   ; 0x01
+
+HKR,Ndi\Params\ConnectionType,ParamDesc,,"ConnectionType"
+HKR,Ndi\Params\ConnectionType,default,,"15"
+HKR,Ndi\Params\ConnectionType,type,,"enum"
+HKR,Ndi\Params\ConnectionType\enum,15,,"AutoSense"
+HKR,Ndi\Params\ConnectionType\enum,4,,"10BaseT"
+HKR,Ndi\Params\ConnectionType\enum,5,,"10BaseT Full_Duplex"
+HKR,Ndi\Params\ConnectionType\enum,8,,"100BaseTX"
+HKR,Ndi\Params\ConnectionType\enum,9,,"100BaseTX Full_Duplex"
+HKR,Ndi\Params\ConnectionType,flag,1,"20","00","00","00"
+
+;for network address
+HKR,Ndi\Params\NetworkAddress,ParamDesc,,"Network address"
+HKR,Ndi\Params\NetworkAddress,type,,"edit"
+HKR,Ndi\Params\NetworkAddress,default,,""
+HKR,Ndi\Params\NetworkAddress,Optional,,"1"
+HKR,Ndi\Params\NetworkAddress,LimitText,,"12"
+
+[RD9700.Service]
+DisplayName    = %RD9700.Service.DispName%
+ServiceType    = 1
+StartType      = 3
+ErrorControl   = 1
+ServiceBinary  = %12%\RD9700.sys
+LoadOrderGroup = NDIS,NTKERN,NDIS
+AddReg         = TextModeFlags.Reg
+
+[Common.EventLog]
+AddReg = Common.AddEventLog.Reg
+
+[Common.AddEventLog.Reg]
+HKR, , EventMessageFile, 0x00020000, %%SystemRoot%%\System32\netevent.dll
+HKR, , TypesSupported  , 0x00010001, 7
+
+[TextModeFlags.Reg]
+HKR, , TextModeFlags, 0x00010001, 0x0001
+
+;*******************************************************************************
+; Destination directories
+
+[DestinationDirs]
+RD9700.ndis.copyfiles    = 11
+;RD9700.ndis.copyfiles.NTx86 = 12
+RD9700.ndis.copyfiles.NTx86 = 12
+DefaultDestDir           = 11
+
+[SourceDisksNames]
+1=%DISKNAME%,,,
+;2=%DISKNAME%,,,\x86
+;3=%DISKNAME%,,,\amd64
+
+[SourceDisksFiles.x86]
+RD9700.sys = 1
+
+;*******************************************************************************
+; Localizable strings
+
+[Strings]
+SUPCOM = "Corechip Semiconductor, Inc."
+
+;Source Disk Name
+DISKNAME = "RD9700 USB2.0 To Fast Ethernet Adapter Driver Disk"
+
+RD9700.DeviceDesc       = "RD9700 USB2.0 To Fast Ethernet Adapter"
+RD9700.Service.DispName = "RD9700 USB2.0 To Fast Ethernet Adapter"
+

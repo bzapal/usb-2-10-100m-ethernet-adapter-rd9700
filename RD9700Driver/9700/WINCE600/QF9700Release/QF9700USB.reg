@@ -1,0 +1,51 @@
+;===============================================================================
+; For QF9700
+;===============================================================================
+[HKEY_LOCAL_MACHINE\Drivers\USB\LoadClients\4070_38656\Default\Default\QF9700USB]
+   "DLL"="qf9700usb.dll"
+
+[HKEY_LOCAL_MACHINE\Drivers\USB\ClientDrivers\QF9700USB]
+   "DLL"="qf9700usb.dll"
+
+[HKEY_LOCAL_MACHINE\Comm\QF9700USB]
+;LOC_FRIENDLYRNDISHOST
+    "DisplayName"="CoreChip Fast Ethernet Adapter over USB"
+    "Group"="NDIS"
+    "ImagePath"="qf9700usb.dll"
+    
+[HKEY_LOCAL_MACHINE\Comm\QF9700USB\Linkage]
+   "Route"=multi_sz:"QF9700USB1"
+
+[HKEY_LOCAL_MACHINE\Comm\QF9700USB1]
+;LOC_FRIENDLYRNDISHOST
+    "DisplayName"="CoreChip Fast Ethernet Adapter over USB"
+    "Group"="NDIS"
+    "ImagePath"="qf9700usb.dll"
+    
+[HKEY_LOCAL_MACHINE\Comm\QF9700USB1\Parms]
+	"BusNumber"=dword:0
+	"BusType"=dword:1
+   
+
+[HKEY_LOCAL_MACHINE\Comm\QF9700USB1\Parms\TCPIP]
+    "UseZeroBroadcast"=dword:0
+    "IpAddress"="192.168.1.215"
+    "Subnetmask"="255.255.255.0"
+    "DefaultGateway"="192.168.1.1"
+    "DNS"="192.168.1.1"
+    "WINS"="192.168.1.1"
+    "EnableDHCP"=dword:0
+    
+    
+[HKEY_LOCAL_MACHINE\Comm\QF9700USB2\Parms]
+	"BusNumber"=dword:0
+	"BusType"=dword:1    
+
+[HKEY_LOCAL_MACHINE\Comm\QF9700USB2\Parms\TCPIP]
+    "UseZeroBroadcast"=dword:0
+    "IpAddress"="192.168.0.216"
+    "Subnetmask"="255.255.255.0"
+    "DefaultGateway"="192.168.0.1"
+    "DNS"="192.168.0.1"
+    "WINS"="192.168.0.1"
+    "EnableDHCP"=dword:0

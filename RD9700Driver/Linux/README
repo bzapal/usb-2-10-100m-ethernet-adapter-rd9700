@@ -1,0 +1,46 @@
+1， 建立编译环境：
+1.1 如果是X86、MIPS等宿主平台，请确认编译环境已经ok。
+1.2 如果是ARM等目标平台，请确认交叉编译环境已经ok。
+（NOTE ： 一般kernel能编译，说明环境默认都已经ok）
+
+2， 确认linux kernel代码树
+1.1 请将kernel代码放在编译环境下。
+1.2 目前已经验证的针对本驱动的kernel代码版本为2.6.28和2.6.29
+
+3， 确认本驱动需要的kernel编译选项(make menuconfig)
+< 注：
+	1，	如果是交叉编译，请确认CROSS_COMPILE=xxx， 
+		比如xxx在mips小端模式下为: mipsel-linux-
+		而在arm下可以为： elf-linux-或者arm-linux-等。
+	2， 此CROSS_COMPILE=mipsel-linux- 可以放在 make menuconfig=mipsel-linux-
+		也可以放在源代码的Makefile中。
+>
+3.1 确定文件mii.c已经被包含入kernel代码中，具体过程如附件中的图片mii-1,2,3,4
+3.2 确定文件usbnet.c已经被包含入kernel的代码中，具体过程如附件中的图片usbnet-1,2,3,4
+	
+4,  编译内核代码
+	cd $(KERNEL_DIR)/			;; 这里就是到linux kernel代码树目录下
+	make
+
+5， 编译qf9700驱动
+5.1 转到驱动代码目录下 ： cd qf9700/
+5.2 依据实际情况将驱动中的Makefile修改有关参数
+	KERNEL_DIR	:= 此项需要依据实际情况修改为kernel源代码的位置，比如: /root/linux-2.6.28-test/
+	KERNEL_VERSION	:= 此项需要依据实际情况修改为kernel源代码的版本，比如： 2.6.28-15等，
+				也就是make menuconfig左上看到的版本名称
+5.3 编译驱动
+	make
+
+6, 安装内核和驱动
+6.1 安装内核驱动，到kernel代码树下, 以root身份键入：
+	make modules_install
+6.2 加入本驱动
+	cp qf9700.ko /lib/modules/$(KERNEL_VERSION)/kernel/drivers/net/usb/
+6.2 使用编译的kernel和驱动
+	可以采用的内核有： $(KERNEL_DIR)/vmlinux
+	可以采用的所有驱动在： /lib/modules/$(KERNEL_VERSION)/下。
+
+7, 其他
+	a， 本驱动用到的kernel有关资源主要是mii.c和usbnet.c两个文件，所有需要将其编入kernel中或者编入module
+	b， 驱动在目标平台或者宿主平台上将以qf9700.ko出现，可以在相应平台上通过lsmod看看有没有正确驱动的加载。
+
