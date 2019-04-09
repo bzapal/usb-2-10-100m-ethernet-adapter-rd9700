@@ -2,7 +2,7 @@
 
 ## Installation of "USB 2.0 10/100M Ethernet Adapter" (model QTS1081B 9700) (Corechip RD9700) in Apple macOS High Sierra
 
-Installation guide for an inexpensive ($2 on eBay, shipped) unbranded USB 2.0 10/100M Ethernet Adapter model QTS1081B 9700 (RD9700 chip by [Corechip](http://www.corechip-sz.com/)) in Apple macOS High Sierra (10.13.6) (tested in 2017 Macbook Air). Included driver files were provided on the installation CD included with the adapter.
+Installation guide for an inexpensive ($2 on eBay, shipped) unbranded "USB 2.0 10/100M Ethernet Adapter" model QTS1081B 9700 (RD9700 chip by [Corechip](http://www.corechip-sz.com/)) in Apple macOS High Sierra (10.13.6) (tested in 2017 Macbook Air). Included driver files were provided on the installation CD included with the adapter.
 
 Please help saving beautiful minds by turning off WiFi microwave radios.
 
@@ -57,10 +57,10 @@ NOTE: The USB adapter will not show up in the list of network interfaces if it i
 
 From the menu bar, select "****" (Apple symbol) -> "**System Preferences**" -> "**Network**" -> "**+**" (to add service) -> select "**USB 2.0 10/100M Ethernet Adaptor**" -> click "**Create**". <br>
 The new adapter should be added to the list in the window on the left. If the ethernet cable is not inserted into the adapter or if it is not live, the status will state "**Not Connected**". If ethernet cable is connected and "live", the status should be **"Connected"**. <br>
-From here, network specific options should be configured (such as: automatic configuration of IPv4 with DHCP, etc.) as per user's need - as in this example: <br>
-![](images/02.png)
+From here, network specific options should be configured (such as: automatic configuration of IPv4 with DHCP, etc.) as per user's need - as in the examples below. <br>
+NOTE: This interface gets assigned a random MAC address. The reported USB connection throughput is 12 Mbps (USB 1.1, not (advertised) USB 2.0 speeds), thus data throughputs will be in the 600-700 KiB/s range.<br>
 
-NOTES: This interface gets assigned a random MAC address. The reported USB connection throughput is 12 Mbps (USB 1.1, not (advertised) USB 2.0 speeds), thus data throughputs will be in the 600-700 KiB/s range.<br>
+![](images/02.png)
 
 ![](images/03.png)
 
