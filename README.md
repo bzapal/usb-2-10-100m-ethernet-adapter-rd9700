@@ -1,6 +1,6 @@
 ![](images/usb-2-10-100m-ethernet-adapter-9700.jpg)
 
-## Installation of USB 2.0 10/100M Ethernet Adapter (model QTS1081B 9700) (Corechip RD9700) in Apple macOS High Sierra
+## Installation of "USB 2.0 10/100M Ethernet Adapter" (model QTS1081B 9700) (Corechip RD9700) in Apple macOS High Sierra
 
 Installation guide for an inexpensive ($2 on eBay, shipped) unbranded USB 2.0 10/100M Ethernet Adapter model QTS1081B 9700 (RD9700 chip by [Corechip](http://www.corechip-sz.com/)) in Apple macOS High Sierra (10.13.6) (tested in 2017 Macbook Air). Included driver files were provided on the installation CD included with the adapter.
 
@@ -60,7 +60,7 @@ The new adapter should be added to the list in the window on the left. If the et
 From here, network specific options should be configured (such as: automatic configuration of IPv4 with DHCP, etc.) as per user's need - as in this example: <br>
 ![](images/02.png)
 
-NOTE: This interface gets assigned a random MAC address: <br>
+NOTES: This interface gets assigned a random MAC address. The reported USB connection throughput is 12 Mbps (USB 1.1, not (advertised) USB 2.0 speeds), thus data throughputs will be in the 600-700 KiB/s range.<br>
 
 ![](images/03.png)
 
