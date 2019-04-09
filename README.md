@@ -2,7 +2,9 @@
 
 ## Installation of USB 2.0 10/100M Ethernet Adapter (model QTS1081B 9700) (Corechip RD9700) in Apple macOS High Sierra
 
-Installation guide for an inexpensive unbranded USB 2.0 10/100M Ethernet Adapter model QTS1081B 9700 (RD9700 chip by [Corechip](http://www.corechip-sz.com/)) in Apple macOS High Sierra (10.13.6) (tested in 2017 Macbook Air). Included driver files were provided on the installation CD included with the adapter.
+Installation guide for an inexpensive ($2 on eBay, shipped) unbranded USB 2.0 10/100M Ethernet Adapter model QTS1081B 9700 (RD9700 chip by [Corechip](http://www.corechip-sz.com/)) in Apple macOS High Sierra (10.13.6) (tested in 2017 Macbook Air). Included driver files were provided on the installation CD included with the adapter.
+
+Please help saving beautiful minds by turning off WiFi microwave radios.
 
 ### 1) Disabling SIP (System Integrity Protection)
 
@@ -15,7 +17,7 @@ From the menu bar, select "****" (Apple symbol), then "**Restart**". <br>
 
 ### 2) Installing driver
 
-Execute file "**RD9700  Mac OS 10.10 Driver.pkg**" from the directory "**RD9700Driver/MAC DRIVER**",by double clicking on it. <br>
+Execute file "**RD9700  Mac OS 10.10 Driver.pkg**" from the directory "**RD9700Driver/MAC DRIVER**", by double clicking on it. <br>
 Installer window will appear. <br>
 Proceed with the installation. <br>
 Once installation application has finished, the application window should state: "**The installation was successful. The software was installed.**". <br>
